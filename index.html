@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Sandbox</title>
+</head>
+
+<body>
+
+    <button id="btn">Click</button>
+    <!-- <ul id="people"></ul> -->
+    <div id="people"></div>
+
+
+    <script>
+        /*
+        var person = {
+            name: "Brad",
+            age: 35,
+            address: {
+                street: "5 main st",
+                city: "Boston"
+            },
+            children: ["Brianna", "Nicholas"]
+        }
+
+        // // to JSON
+        // person = JSON.stringify(person);
+        // // to return bask to JS object
+        // person = JSON.parse(person);
+
+        var people = [
+            {
+                name: "Brad",
+                age: 35
+            },
+            {
+                name: "John",
+                age: 40
+            },
+            {
+                name: "Sarah",
+                age: 25
+            }
+        ];
+
+        // console.log(people[1].name);
+
+        var output = '';
+        for (var i = 0; i < people.length; i++) {
+            // console.log(people[i].name)
+            output += '<li>' + people[i].name + '</li>'
+        }
+        document.getElementById('people').innerHTML = output;
+        */
+
+
+        var user = {
+            name: "Sam",
+            age: 28
+        }
+
+        user = JSON.stringify(user);
+        console.log(user);
+
+
+        var users = [
+            {
+                id: 1884,
+                name: "Samantha",
+                age: 25,
+            },
+            {
+                id: 1841,
+                name: "Mike",
+                age: 45,
+            },
+            {
+                id: 1356,
+                name: "John",
+                age: 37,
+            },
+            {
+                id: 11104,
+                name: "Luke",
+                age: 38,
+            },
+        ]
+        var output = '';
+        for (var i = 0; i < users.length; i++) {
+            console.log(users[i].name)
+        }
+
+        document.getElementById('btn').addEventListener('click', loadUsers);
+
+        function loadUsers() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'people.json', true);
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var people = JSON.parse(this.responseText);
+                    var output = '';
+                    output += '<ul>' +
+                        '<li>Name: ' + people.name + '</li>' +
+                        '<li>Age: ' + people.age + '</li>' +
+                        '</ul>';
+                    document.getElementById('people').innerHTML = output;
+                }
+            }
+            xhr.send();
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
